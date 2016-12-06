@@ -1,9 +1,11 @@
 defmodule GraphQl.User do
+  @moduledoc "The User model"
   use GraphQl.Web, :model
 
   schema "users" do
     field :name, :string
     field :email, :string
+    has_many :posts, GraphQl.Post
 
     timestamps()
   end
