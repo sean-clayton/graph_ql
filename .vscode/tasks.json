@@ -36,6 +36,12 @@
       "args": [
         "ecto.migrate"
       ]
+    },
+    {
+      "taskName": "start phoenix server",
+      "args": [
+        "phoenix.server"
+      ]
     }
   ]
 }
