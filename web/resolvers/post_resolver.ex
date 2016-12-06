@@ -20,10 +20,20 @@ defmodule GraphQl.PostResolver do
     |> Repo.insert
   end
 
-  @lint {Credo.Check.Refactor.PipeChainStart, false}
   def update(%{id: id, post: post_params}, _info) do
-    Repo.get!(Post, id)
-    |> Post.changeset(post_params)
-    |> Repo.update
+    case Repo.get(Post, id) do
+      nil -> {:error, "Post with id #{id} not found"}
+      post -> post
+              |> Post.changeset(post_params)
+              |> Repo.update
+    end
+  end
+
+  def delete(%{id: id}, _info) do
+    case Repo.get(Post, id) do
+      nil -> {:error, "Post with id #{id} not found"}
+      post -> post
+              |> Repo.delete
+    end
   end
 end
