@@ -30,6 +30,12 @@
       "args": [
         "compile"
       ]
+    },
+    {
+      "taskName": "migrate",
+      "args": [
+        "ecto.migrate"
+      ]
     }
   ]
 }
