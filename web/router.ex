@@ -21,7 +21,7 @@ defmodule GraphQl.Router do
 
   forward "/api", Absinthe.Plug,
     schema: GraphQl.Schema
-  
+
   forward "/graphiql", Absinthe.Plug.GraphiQL,
     schema: GraphQl.Schema
   # Other scopes may use custom stacks.
