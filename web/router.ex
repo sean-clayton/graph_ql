@@ -9,6 +9,10 @@ defmodule GraphQl.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :graphql do
+    plug GraphQl.Web.Context
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -19,8 +23,12 @@ defmodule GraphQl.Router do
     get "/", PageController, :index
   end
 
-  forward "/api", Absinthe.Plug,
-    schema: GraphQl.Schema
+  scope "/api" do
+    pipe_through :graphql # Use GraphQL for the api 🤘
+
+    forward "/", Absinthe.Plug,
+      schema: GraphQl.Schema
+  end
 
   forward "/graphiql", Absinthe.Plug.GraphiQL,
     schema: GraphQl.Schema
