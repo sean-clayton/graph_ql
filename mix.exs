@@ -49,6 +49,8 @@ defmodule GraphQl.Mixfile do
       {:poison, "~> 2.1.0"},
       {:faker, "~> 0.7"},
       {:credo, "~> 0.5", only: [:dev, :test]},
+      {:comeonin, "~> 2.5"},
+      {:guardian, "~> 0.13.0"},
     ]
   end
 
