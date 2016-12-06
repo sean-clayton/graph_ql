@@ -13,4 +13,10 @@ defmodule GraphQl.PostResolver do
       post -> {:ok, post}
     end
   end
+
+  def create(args, _info) do
+    %Post{}
+    |> Post.changeset(args)
+    |> Repo.insert
+  end
 end
