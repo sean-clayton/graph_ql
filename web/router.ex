@@ -19,6 +19,11 @@ defmodule GraphQl.Router do
     get "/", PageController, :index
   end
 
+  forward "/api", Absinthe.Plug,
+    schema: GraphQl.Schema
+  
+  forward "/graphiql", Absinthe.Plug.GraphiQL,
+    schema: GraphQl.Schema
   # Other scopes may use custom stacks.
   # scope "/api", GraphQl do
   #   pipe_through :api
