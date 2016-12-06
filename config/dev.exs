@@ -35,8 +35,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :graph_ql, GraphQl.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "sean",
+  username: "postgres",
   password: "postgres",
-  database: "sean",
+  database: "graphql_dev",
   hostname: "localhost",
   pool_size: 10
