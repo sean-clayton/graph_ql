@@ -26,7 +26,7 @@ config :guardian, Guardian,
   allowed_algos: ["HS512"], # optional
   verify_module: Guardian.JWT, # optional
   issuer: "GraphQl",
-  ttl: { 15, :minutes },
+  ttl: {15, :minutes},
   verify_issuer: true, # optional
   secret_key: "mvKb03WjVdJ8Z1GEI2ISM/r7X2PFeCeDE0AAMrYyvyPYXmRUp2vrQfoBtJl7GYoU",
   serializer: GraphQl.GuardianSerializer

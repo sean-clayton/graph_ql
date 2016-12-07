@@ -1,10 +1,17 @@
 defmodule GraphQl.UserResolver do
   @moduledoc "Resolver for `Users` field"
 
-  alias GraphQl.{Repo,User}
+  alias GraphQl.{Repo,User,Session}
 
   def all(_args, _info) do
     {:ok, Repo.all(User)}
+  end
+
+  def login(params, _info) do
+    with {:ok, user} <- Session.authenticate(params, Repo),
+         {:ok, jwt, _} <- Guardian.encode_and_sign(user, :access) do
+      {:ok, %{token: jwt}}
+    end
   end
 
   def update(%{id: id, user: user_params}, _info) do
